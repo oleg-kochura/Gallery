@@ -11,21 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var PlaceholderComponent = (function () {
     function PlaceholderComponent() {
+        this.onInputFile = new core_1.EventEmitter();
     }
     PlaceholderComponent.prototype.onChange = function (event) {
-        var files = event.srcElement.files;
-        console.log(files);
+        var file = event.srcElement.files[0];
+        var reader = new FileReader();
+        reader.onload = this.handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
+    };
+    PlaceholderComponent.prototype.handleReaderLoaded = function (e) {
+        var reader = e.target.result;
+        this.onInputFile.emit(reader);
     };
     return PlaceholderComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], PlaceholderComponent.prototype, "onInputFile", void 0);
 PlaceholderComponent = __decorate([
     core_1.Component({
         selector: 'placeholder',
         templateUrl: './placeholder.component.html',
         styleUrls: ['./placeholder.component.css'],
-        providers: []
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], PlaceholderComponent);
 exports.PlaceholderComponent = PlaceholderComponent;
 //# sourceMappingURL=placeholder.component.js.map

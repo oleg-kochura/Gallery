@@ -6,8 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var image_1 = require("../image");
 var GalleryItemComponent = (function () {
     function GalleryItemComponent() {
+        this.galleryItem = new image_1.GalleryImage('');
     }
     return GalleryItemComponent;
 }());
@@ -15,8 +17,7 @@ GalleryItemComponent = __decorate([
     core_1.Component({
         selector: 'gallery-item',
         templateUrl: './gallery-item.component.html',
-        styleUrls: ['./gallery-item.component.css'],
-        providers: []
+        styleUrls: ['./gallery-item.component.css']
     })
 ], GalleryItemComponent);
 exports.GalleryItemComponent = GalleryItemComponent;

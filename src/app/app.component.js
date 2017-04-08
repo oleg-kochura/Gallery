@@ -6,19 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var GalleryComponent = (function () {
-    function GalleryComponent() {
-        this.title = 'Welcome to Viseven imagestock';
+var AppComponent = (function () {
+    function AppComponent() {
     }
-    return GalleryComponent;
+    return AppComponent;
 }());
-GalleryComponent = __decorate([
+AppComponent = __decorate([
     core_1.Component({
-        selector: 'my-gallery',
-        templateUrl: './gallery.component.html',
-        styleUrls: ['./gallery.component.css'],
-        providers: []
+        selector: 'app',
+        templateUrl: './app.component.html',
+        styleUrls: ['./app.component.css'],
     })
-], GalleryComponent);
-exports.GalleryComponent = GalleryComponent;
-//# sourceMappingURL=gallery.component.js.map
+], AppComponent);
+exports.AppComponent = AppComponent;
+//# sourceMappingURL=app.component.js.map

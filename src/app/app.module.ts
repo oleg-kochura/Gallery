@@ -1,18 +1,20 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import { GalleryComponent }  from './gallery.component';
+import { AppComponent }  from './app.component';
+import { PicturesListComponent }  from './pictures-list/pictures-list.component';
 import { GalleryItemComponent }  from './gallery-item/gallery-item.component';
 import { PlaceholderComponent }  from './placeholder/placeholder.component';
 
 @NgModule({
   imports: [BrowserModule],
   declarations: [
-    GalleryComponent,
+    AppComponent,
+    PicturesListComponent,
     GalleryItemComponent,
     PlaceholderComponent
   ],
-  bootstrap: [GalleryComponent]
+  bootstrap: [AppComponent]
 })
 
 export class AppModule {}
