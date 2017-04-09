@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { GalleryImage } from '../image';
+import { Component, Input } from '@angular/core';
+import { GalleryImage } from '../shared/image';
 
 @Component({
   selector: 'gallery-item',
@@ -8,5 +8,5 @@ import { GalleryImage } from '../image';
 })
 
 export class GalleryItemComponent {
-  galleryItem: GalleryImage = new GalleryImage('');
+  @Input() galleryItem: GalleryImage;
 }

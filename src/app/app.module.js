@@ -11,6 +11,8 @@ var app_component_1 = require("./app.component");
 var pictures_list_component_1 = require("./pictures-list/pictures-list.component");
 var gallery_item_component_1 = require("./gallery-item/gallery-item.component");
 var placeholder_component_1 = require("./placeholder/placeholder.component");
+var popup_component_1 = require("./popup/popup.component");
+var gallery_service_1 = require("./services/gallery.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,8 +25,10 @@ AppModule = __decorate([
             app_component_1.AppComponent,
             pictures_list_component_1.PicturesListComponent,
             gallery_item_component_1.GalleryItemComponent,
-            placeholder_component_1.PlaceholderComponent
+            placeholder_component_1.PlaceholderComponent,
+            popup_component_1.PopupComponent
         ],
+        providers: [gallery_service_1.GalleryService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

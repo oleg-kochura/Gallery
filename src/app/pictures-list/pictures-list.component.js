@@ -9,22 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var gallery_service_1 = require("../services/gallery.service");
 var PicturesListComponent = (function () {
-    function PicturesListComponent() {
-        this.title = 'Welcome to Viseven imagestock';
-        this.pictures = [];
+    function PicturesListComponent(galleryService) {
+        this.galleryService = galleryService;
+        this.images = [];
     }
-    PicturesListComponent.prototype.getImageSrc = function (src) {
+    PicturesListComponent.prototype.ngOnInit = function () {
+        this.images = this.galleryService.getImages();
     };
     return PicturesListComponent;
 }());
 PicturesListComponent = __decorate([
     core_1.Component({
         selector: 'pictures-list',
-        templateUrl: 'pictures-list.component.html',
-        styleUrls: ['pictures-list.component.css'],
+        templateUrl: './pictures-list.component.html',
+        styleUrls: ['./pictures-list.component.css'],
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [gallery_service_1.GalleryService])
 ], PicturesListComponent);
 exports.PicturesListComponent = PicturesListComponent;
 //# sourceMappingURL=pictures-list.component.js.map

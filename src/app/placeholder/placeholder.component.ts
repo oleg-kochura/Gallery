@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { GalleryService } from '../services/gallery.service';
 
 @Component({
   selector: 'placeholder',
@@ -8,8 +9,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class PlaceholderComponent {
 
-  @Output()
-  onInputFile = new EventEmitter();
+  constructor(private galleryService: GalleryService) { }
 
   onChange(event: any) {
     let file = event.srcElement.files[0];
@@ -21,7 +21,7 @@ export class PlaceholderComponent {
 
   handleReaderLoaded(e: any) {
     let reader: string = e.target.result;
-    this.onInputFile.emit(reader);
+    this.galleryService.createImage(reader);
   }
 
 }

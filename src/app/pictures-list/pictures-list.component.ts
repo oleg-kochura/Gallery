@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GalleryImage } from '../shared/image';
+
+import { GalleryService } from '../services/gallery.service';
 
 @Component({
   selector: 'pictures-list',
-  templateUrl: 'pictures-list.component.html',
-  styleUrls: ['pictures-list.component.css'],
+  templateUrl: './pictures-list.component.html',
+  styleUrls: ['./pictures-list.component.css'],
 })
-export class PicturesListComponent {
-  title = 'Welcome to Viseven imagestock';
-  pictures: any[] = [];
 
-  constructor() {}
+export class PicturesListComponent implements OnInit {
+  images: GalleryImage[];
 
-  getImageSrc(src: string) {
+  constructor(private galleryService: GalleryService) {
+    this.images = [];
   }
+
+  ngOnInit() {
+    this.images = this.galleryService.getImages();
+  }
+
 }

@@ -9,9 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var gallery_service_1 = require("../services/gallery.service");
 var PlaceholderComponent = (function () {
-    function PlaceholderComponent() {
-        this.onInputFile = new core_1.EventEmitter();
+    function PlaceholderComponent(galleryService) {
+        this.galleryService = galleryService;
     }
     PlaceholderComponent.prototype.onChange = function (event) {
         var file = event.srcElement.files[0];
@@ -21,20 +22,17 @@ var PlaceholderComponent = (function () {
     };
     PlaceholderComponent.prototype.handleReaderLoaded = function (e) {
         var reader = e.target.result;
-        this.onInputFile.emit(reader);
+        this.galleryService.createImage(reader);
     };
     return PlaceholderComponent;
 }());
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], PlaceholderComponent.prototype, "onInputFile", void 0);
 PlaceholderComponent = __decorate([
     core_1.Component({
         selector: 'placeholder',
         templateUrl: './placeholder.component.html',
         styleUrls: ['./placeholder.component.css'],
-    })
+    }),
+    __metadata("design:paramtypes", [gallery_service_1.GalleryService])
 ], PlaceholderComponent);
 exports.PlaceholderComponent = PlaceholderComponent;
 //# sourceMappingURL=placeholder.component.js.map

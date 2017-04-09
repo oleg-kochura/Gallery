@@ -1,7 +1,9 @@
 .wrapper {
+  position: relative;
   width: 1024px;
   height: 768px;
   background: #f0f3f6;
+  margin: auto;
 }
 
 .conntainer {
@@ -13,4 +15,8 @@ h1 {
   color: #8499a7;
   font: bold 24px OpenSans, sans-serif;
   text-transform: uppercase;
+}
+
+placeholder {
+  float: left;
 }

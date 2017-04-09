@@ -6,18 +6,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Welcome to Viseven imagestock';
+var PopupComponent = (function () {
+    function PopupComponent() {
+        this.opened = false;
     }
-    return AppComponent;
+    PopupComponent.prototype.open = function () {
+        this.opened = true;
+    };
+    PopupComponent.prototype.close = function () {
+        this.opened = false;
+    };
+    return PopupComponent;
 }());
-AppComponent = __decorate([
+PopupComponent = __decorate([
     core_1.Component({
-        selector: 'app',
-        templateUrl: './app.component.html',
-        styleUrls: ['./app.component.css'],
+        selector: 'popup',
+        templateUrl: './popup.component.html',
+        styleUrls: ['./popup.component.css']
     })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], PopupComponent);
+exports.PopupComponent = PopupComponent;
+//# sourceMappingURL=popup.component.js.map
