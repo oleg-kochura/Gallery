@@ -10,9 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var image_1 = require("../shared/image");
+var gallery_service_1 = require("../services/gallery.service");
 var GalleryItemComponent = (function () {
-    function GalleryItemComponent() {
+    function GalleryItemComponent(galleryService) {
+        this.galleryService = galleryService;
+        this.comments = [];
+        this.likes = 0;
+        this.dislikes = 0;
     }
+    GalleryItemComponent.prototype.openInfo = function () {
+        this.galleryService.openPopup(this);
+    };
     return GalleryItemComponent;
 }());
 __decorate([
@@ -24,7 +32,8 @@ GalleryItemComponent = __decorate([
         selector: 'gallery-item',
         templateUrl: './gallery-item.component.html',
         styleUrls: ['./gallery-item.component.css']
-    })
+    }),
+    __metadata("design:paramtypes", [gallery_service_1.GalleryService])
 ], GalleryItemComponent);
 exports.GalleryItemComponent = GalleryItemComponent;
 //# sourceMappingURL=gallery-item.component.js.map

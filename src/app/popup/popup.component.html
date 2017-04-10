@@ -1,5 +1,5 @@
-<div class="popup">
-  <button class="close-popup-button"></button>
+<div class="popup" *ngIf="opened">
+  <button class="close-popup-button" (click)="close()"></button>
 
   <section class="image-section">
     <div class="image-wrapper"></div>
