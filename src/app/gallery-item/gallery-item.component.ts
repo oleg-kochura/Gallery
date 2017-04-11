@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { GalleryImage } from '../shared/image';
-import { Comment } from '../shared/comment';
 import { GalleryService } from '../services/gallery.service';
 
 @Component({
@@ -10,17 +9,14 @@ import { GalleryService } from '../services/gallery.service';
 })
 
 export class GalleryItemComponent {
-  @Input() galleryItem: GalleryImage;
 
-  private comments: Comment[] = [];
-  private likes: number = 0;
-  private dislikes: number = 0;
+  @Input() galleryItem: GalleryImage;
 
   constructor(private galleryService: GalleryService) {
   }
 
-  openInfo() {
-   // this.galleryService.openPopup(this);
+  open() {
+
   }
 
 }

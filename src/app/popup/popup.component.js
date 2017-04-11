@@ -14,8 +14,11 @@ var PopupComponent = (function () {
     function PopupComponent(galleryService) {
         this.galleryService = galleryService;
     }
-    PopupComponent.prototype.ngOnInit = function () {
-        this.opened = this.galleryService.opened();
+    PopupComponent.prototype.open = function () {
+        this.opened = true;
+    };
+    PopupComponent.prototype.close = function () {
+        this.opened = false;
     };
     return PopupComponent;
 }());

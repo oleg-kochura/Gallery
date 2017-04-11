@@ -1,6 +1,10 @@
+import {Injectable} from '@angular/core';
+
 import { images } from '../shared/data';
 import { GalleryImage } from '../shared/image';
 
+
+@Injectable()
 export class GalleryService {
   images: GalleryImage[] = images;
 

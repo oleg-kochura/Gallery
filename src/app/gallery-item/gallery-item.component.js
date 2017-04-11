@@ -14,12 +14,8 @@ var gallery_service_1 = require("../services/gallery.service");
 var GalleryItemComponent = (function () {
     function GalleryItemComponent(galleryService) {
         this.galleryService = galleryService;
-        this.comments = [];
-        this.likes = 0;
-        this.dislikes = 0;
     }
-    GalleryItemComponent.prototype.openInfo = function () {
-        this.galleryService.openPopup(this);
+    GalleryItemComponent.prototype.open = function () {
     };
     return GalleryItemComponent;
 }());

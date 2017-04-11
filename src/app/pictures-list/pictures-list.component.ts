@@ -19,5 +19,4 @@ export class PicturesListComponent implements OnInit {
   ngOnInit() {
     this.images = this.galleryService.getImages();
   }
-
 }

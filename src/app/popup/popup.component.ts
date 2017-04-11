@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GalleryService } from '../services/gallery.service';
 
 @Component({
@@ -7,14 +7,10 @@ import { GalleryService } from '../services/gallery.service';
   styleUrls: ['./popup.component.css']
 })
 
-export class PopupComponent implements OnInit  {
+export class PopupComponent {
   opened: boolean;
 
   constructor(private galleryService: GalleryService) {
-  }
-
-  ngOnInit() {
-    // this.opened = this.galleryService.opened();
   }
 
   open() {
@@ -24,4 +20,5 @@ export class PopupComponent implements OnInit  {
   close() {
     this.opened = false;
   }
+
 }
