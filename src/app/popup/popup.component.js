@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var gallery_service_1 = require("../services/gallery.service");
+var comment_1 = require("../shared/comment");
 var PopupComponent = (function () {
     function PopupComponent(galleryService) {
         this.galleryService = galleryService;
@@ -26,6 +27,12 @@ var PopupComponent = (function () {
     };
     PopupComponent.prototype.close = function () {
         this.opened = false;
+    };
+    PopupComponent.prototype.addComment = function (comment) {
+        var newComment = new comment_1.Comment(comment.value.author, new Date(), comment.value.message);
+        this.data.comments.push(newComment);
+        console.log(this.data);
+        // this.galleryService.addComment(comment.value);
     };
     return PopupComponent;
 }());

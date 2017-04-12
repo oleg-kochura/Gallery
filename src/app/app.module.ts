@@ -1,5 +1,6 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 import { PicturesListComponent }  from './pictures-list/pictures-list.component';
@@ -10,7 +11,10 @@ import { PopupComponent }  from './popup/popup.component';
 import { GalleryService } from './services/gallery.service';
 
 @NgModule({
-  imports: [BrowserModule],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
   declarations: [
     AppComponent,
     PicturesListComponent,

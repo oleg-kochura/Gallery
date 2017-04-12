@@ -3,6 +3,7 @@ import { Subject }    from 'rxjs/Subject';
 
 import { images } from '../shared/data';
 import { GalleryImage } from '../shared/image';
+import { Comment } from '../shared/comment';
 
 
 @Injectable()

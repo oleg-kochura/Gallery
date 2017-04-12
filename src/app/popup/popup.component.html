@@ -18,9 +18,9 @@
         <p class="comment">{{comment.message}}</p>
       </div>
     </div>
-    <form action="" class="add-comment-form">
-      <input type="text">
-      <textarea name="" id="" cols="30" rows="2"></textarea>
+    <form action="" class="add-comment-form" (ngSubmit)="addComment(commentsForm); commentsForm.resetForm()" #commentsForm="ngForm">
+      <input type="text" name="author" ngModel required>
+      <textarea name="message" id="" cols="30" ngModel rows="2" required></textarea>
       <button>add</button>
     </form>
   </section>

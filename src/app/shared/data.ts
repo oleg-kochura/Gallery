@@ -1,4 +1,4 @@
-export const images = [
+export const images  = [
   {
     src: 'url(./app/shared/img/pic1.jpg)',
     comments: [
