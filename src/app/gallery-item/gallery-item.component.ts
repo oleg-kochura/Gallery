@@ -16,7 +16,7 @@ export class GalleryItemComponent {
   }
 
   open() {
-
+    this.galleryService.openPopup(this);
   }
 
 }
