@@ -4,8 +4,8 @@
   <section class="image-section">
     <div class="image-wrapper" [ngStyle]="{ 'background-image': data.src }"></div>
     <div class="activity">
-      <button class="like">like</button>
-      <button class="dislike">dislike</button>
+      <button class="like" (click)="inc('likes')">like</button>
+      <button class="dislike" (click)="inc('dislikes')">dislike</button>
     </div>
   </section>
 
@@ -14,7 +14,7 @@
     <div class="comments-container">
       <div class="comment-item" *ngFor="let comment of data.comments">
         <p class="author">{{comment.author}}</p>
-        <p class="date">{{comment.date}}</p>
+        <p class="date">{{comment.date | date:"MM/dd/yy"}}</p>
         <p class="comment">{{comment.message}}</p>
       </div>
     </div>

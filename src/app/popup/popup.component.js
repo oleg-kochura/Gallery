@@ -22,6 +22,9 @@ var PopupComponent = (function () {
             _this.open();
         });
     };
+    PopupComponent.prototype.inc = function (value) {
+        this.data[value]++;
+    };
     PopupComponent.prototype.open = function () {
         this.opened = true;
     };

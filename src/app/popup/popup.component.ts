@@ -25,6 +25,10 @@ export class PopupComponent implements  OnInit {
     })
   }
 
+  inc(value: string) {
+    this.data[value]++
+  }
+
   open() {
     this.opened = true;
   }
