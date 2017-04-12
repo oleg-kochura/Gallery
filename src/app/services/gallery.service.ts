@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject }    from 'rxjs/Subject';
 
 import { images } from '../shared/data';
 import { GalleryImage } from '../shared/image';
@@ -8,9 +8,11 @@ import { GalleryImage } from '../shared/image';
 @Injectable()
 export class GalleryService {
   images: GalleryImage[] = images;
-  popupOpened = false;
 
-  test = new BehaviorSubject({opened: false, data: null});
+  // Observable string sources
+  private missionAnnouncedSource = new Subject<GalleryImage>();
+  // Observable string streams
+  missionAnnounced$ = this.missionAnnouncedSource.asObservable();
 
   getImages(): GalleryImage[] {
     return this.images;
@@ -22,13 +24,8 @@ export class GalleryService {
     console.log(this.images);
   }
 
-  openPopup(data: any) {
-    this.popupOpened = true;
-
-    this.test.next({
-      opened: this.popupOpened,
-      data: data
-    });
+  openPopup(data: GalleryImage) {
+    this.missionAnnouncedSource.next(data);
   }
 
 }

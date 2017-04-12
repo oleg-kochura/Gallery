@@ -15,8 +15,8 @@ export class GalleryItemComponent {
   constructor(private galleryService: GalleryService) {
   }
 
-  open() {
-    this.galleryService.openPopup(this);
+  openInfo() {
+    this.galleryService.openPopup(this.galleryItem);
   }
 
 }

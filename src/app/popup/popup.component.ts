@@ -16,15 +16,14 @@ export class PopupComponent implements  OnInit {
   }
 
   ngOnInit() {
-    this.galleryService.test.subscribe((obj) => {
-      this.opened = obj.opened;
-      this.data = obj.data;
-      console.log(this.data);
+    this.galleryService.missionAnnounced$.subscribe((data) => {
+      this.data = data;
+      this.open();
     })
   }
 
   open() {
-
+    this.opened = true;
   }
 
   close() {

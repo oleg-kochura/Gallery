@@ -6,14 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
+var Subject_1 = require("rxjs/Subject");
 var data_1 = require("../shared/data");
 var image_1 = require("../shared/image");
 var GalleryService = (function () {
     function GalleryService() {
         this.images = data_1.images;
-        this.popupOpened = false;
-        this.test = new BehaviorSubject_1.BehaviorSubject({ opened: false, data: null });
+        // Observable string sources
+        this.missionAnnouncedSource = new Subject_1.Subject();
+        // Observable string streams
+        this.missionAnnounced$ = this.missionAnnouncedSource.asObservable();
     }
     GalleryService.prototype.getImages = function () {
         return this.images;
@@ -24,11 +26,7 @@ var GalleryService = (function () {
         console.log(this.images);
     };
     GalleryService.prototype.openPopup = function (data) {
-        this.popupOpened = true;
-        this.test.next({
-            opened: this.popupOpened,
-            data: data
-        });
+        this.missionAnnouncedSource.next(data);
     };
     return GalleryService;
 }());

@@ -15,8 +15,8 @@ var GalleryItemComponent = (function () {
     function GalleryItemComponent(galleryService) {
         this.galleryService = galleryService;
     }
-    GalleryItemComponent.prototype.open = function () {
-        this.galleryService.openPopup(this);
+    GalleryItemComponent.prototype.openInfo = function () {
+        this.galleryService.openPopup(this.galleryItem);
     };
     return GalleryItemComponent;
 }());

@@ -2,7 +2,7 @@
   <button class="close-popup-button" (click)="close()"></button>
 
   <section class="image-section">
-    <div class="image-wrapper"></div>
+    <div class="image-wrapper" [ngStyle]="{ 'background-image': data.src }"></div>
     <div class="activity">
       <button class="like">like</button>
       <button class="dislike">dislike</button>
@@ -10,12 +10,12 @@
   </section>
 
   <section class="comments-section">
-    <h3>Comments: <span>5</span></h3>
+    <h3>Comments: <span>{{data.comments.length}}</span></h3>
     <div class="comments-container">
       <div class="comment-item" *ngFor="let comment of data.comments">
-        <p class="author">By Anon93</p>
-        <p class="date">Today 10:21 PM</p>
-        <p class="comment">Nullam viverra leo eget urna maximus, et pellentesque enim volutpat.</p>
+        <p class="author">{{comment.author}}</p>
+        <p class="date">{{comment.date}}</p>
+        <p class="comment">{{comment.message}}</p>
       </div>
     </div>
     <form action="" class="add-comment-form">

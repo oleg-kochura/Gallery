@@ -16,13 +16,13 @@ var PopupComponent = (function () {
     }
     PopupComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.galleryService.test.subscribe(function (obj) {
-            _this.opened = obj.opened;
-            _this.data = obj.data;
-            console.log(_this.data);
+        this.galleryService.missionAnnounced$.subscribe(function (data) {
+            _this.data = data;
+            _this.open();
         });
     };
     PopupComponent.prototype.open = function () {
+        this.opened = true;
     };
     PopupComponent.prototype.close = function () {
         this.opened = false;
