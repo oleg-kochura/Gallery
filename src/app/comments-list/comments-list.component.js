@@ -9,27 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var comment_1 = require("../shared/comment");
-var FormComponent = (function () {
-    function FormComponent() {
-        this.onAddNewComment = new core_1.EventEmitter();
+var CommentsListComponent = (function () {
+    function CommentsListComponent() {
     }
-    FormComponent.prototype.addComment = function (comment) {
-        this.newComment = new comment_1.Comment(comment.value.author, new Date(), comment.value.message);
-        this.onAddNewComment.emit(this.newComment);
-    };
-    return FormComponent;
+    return CommentsListComponent;
 }());
 __decorate([
-    core_1.Output(),
+    core_1.Input(),
+    __metadata("design:type", Array)
+], CommentsListComponent.prototype, "comments", void 0);
+__decorate([
+    core_1.Input(),
     __metadata("design:type", Object)
-], FormComponent.prototype, "onAddNewComment", void 0);
-FormComponent = __decorate([
+], CommentsListComponent.prototype, "sidenav", void 0);
+CommentsListComponent = __decorate([
     core_1.Component({
-        selector: 'comments-form',
-        templateUrl: './form.component.html',
-        styleUrls: ['./form.component.css']
+        selector: 'comments-list',
+        templateUrl: './comments-list.component.html',
+        styleUrls: ['./comments-list.component.css']
     })
-], FormComponent);
-exports.FormComponent = FormComponent;
-//# sourceMappingURL=form.component.js.map
+], CommentsListComponent);
+exports.CommentsListComponent = CommentsListComponent;
+//# sourceMappingURL=comments-list.component.js.map

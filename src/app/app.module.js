@@ -17,10 +17,12 @@ var pictures_list_component_1 = require("./pictures-list/pictures-list.component
 var gallery_item_component_1 = require("./gallery-item/gallery-item.component");
 var placeholder_component_1 = require("./placeholder/placeholder.component");
 var popup_component_1 = require("./popup/popup.component");
+var form_component_1 = require("./form/form.component");
+var comments_list_component_1 = require("./comments-list/comments-list.component");
 // services
 var gallery_service_1 = require("./services/gallery.service");
 require("hammerjs");
-//custom NgModule, to group all material modules into one module
+// custom NgModule, to group all material modules into one module
 var CustomMaterialModule = (function () {
     function CustomMaterialModule() {
     }
@@ -28,8 +30,8 @@ var CustomMaterialModule = (function () {
 }());
 CustomMaterialModule = __decorate([
     core_1.NgModule({
-        imports: [material_1.MdButtonModule, material_1.MdInputModule, material_1.MdIconModule],
-        exports: [material_1.MdButtonModule, material_1.MdInputModule, material_1.MdIconModule],
+        imports: [material_1.MdButtonModule, material_1.MdInputModule, material_1.MdIconModule, material_1.MdCardModule, material_1.MdSidenavModule, material_1.MdToolbarModule],
+        exports: [material_1.MdButtonModule, material_1.MdInputModule, material_1.MdIconModule, material_1.MdCardModule, material_1.MdSidenavModule, material_1.MdToolbarModule],
     })
 ], CustomMaterialModule);
 exports.CustomMaterialModule = CustomMaterialModule;
@@ -51,7 +53,9 @@ AppModule = __decorate([
             pictures_list_component_1.PicturesListComponent,
             gallery_item_component_1.GalleryItemComponent,
             placeholder_component_1.PlaceholderComponent,
-            popup_component_1.PopupComponent
+            popup_component_1.PopupComponent,
+            form_component_1.FormComponent,
+            comments_list_component_1.CommentsListComponent
         ],
         providers: [gallery_service_1.GalleryService],
         bootstrap: [app_component_1.AppComponent]

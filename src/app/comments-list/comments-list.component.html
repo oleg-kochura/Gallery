@@ -1,0 +1,28 @@
+<md-toolbar *ngIf="comments.length">
+  <button md-icon-button class="esc-button" (click)="sidenav.toggle()">
+    <i class="material-icons md-dark">close</i>
+    <span>ESC</span>
+  </button>
+  <span class="spacer"></span>
+  <h3 class="grey">Comments: <span>{{comments.length}}</span></h3>
+</md-toolbar>
+<div class="comments-container">
+
+  <div class="center" *ngIf="!comments.length">
+    <h1>Leave your first comment</h1>
+    <i class="material-icons md-dark">mail_outline</i>
+  </div>
+
+  <md-card *ngFor="let comment of comments">
+    <md-card-header>
+      <div md-card-avatar class="card-item-avatar"></div>
+      <md-card-title>{{comment.author}}</md-card-title>
+      <span class="spacer"></span>
+      <p class="date">{{comment.date | date:'HH:mm:ss'}}</p>
+    </md-card-header>
+    <md-card-content>
+      <p class="message">{{comment.message}}</p>
+    </md-card-content>
+  </md-card>
+
+</div>

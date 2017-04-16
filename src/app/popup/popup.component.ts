@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../services/gallery.service';
 import { GalleryImage } from '../shared/image';
 import { Comment } from '../shared/comment';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'popup',
@@ -36,11 +35,8 @@ export class PopupComponent implements  OnInit {
     this.opened = false;
   }
 
-  addComment(comment: NgForm) {
-    let newComment = new Comment(comment.value.author, new Date(), comment.value.message);
-    this.data.comments.push(newComment);
-    console.log(this.data);
-    // this.galleryService.addComment(comment.value);
+  addNewComment(newComment: Comment) {
+      this.data.comments.push(newComment);
   }
 
 }

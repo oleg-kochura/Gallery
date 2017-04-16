@@ -1,0 +1,20 @@
+.add-comment-form {
+  padding: 10px 20px;
+}
+
+md-input-container {
+  width: 50%;
+}
+
+.message-container {
+  width: 65%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.add-comment-form button {
+  margin-left: 40px;
+}

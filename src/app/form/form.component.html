@@ -1,13 +1,12 @@
 <form class="add-comment-form" (ngSubmit)="addComment(commentsForm); commentsForm.resetForm()" #commentsForm="ngForm">
-  <md-input-container class="full-size-container">
+  <md-input-container>
     <input mdInput name="author" ngModel placeholder="Nickname">
   </md-input-container>
   <div class="row">
     <md-input-container class="message-container">
       <textarea mdInput name="message" ngModel placeholder="Your comment..."></textarea>
     </md-input-container>
-    <button md-button class="send-button" color="accent">
-      <md-icon class="material-icons md-dark">email</md-icon>
-    </button>
+    <span class="spacer"></span>
+    <button md-raised-button color="primary">SEND</button>
   </div>
 </form>
