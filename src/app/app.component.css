@@ -2,11 +2,11 @@
   position: relative;
   width: 1024px;
   height: 768px;
-  background: #f0f3f6;
+  background: #eceff4;
   margin: auto;
 }
 
-.conntainer {
+.container {
   width: 980px;
   height: 680px;
 }
@@ -19,4 +19,9 @@ h1 {
 
 placeholder {
   float: left;
+}
+
+pictures-list {
+  width: 980px;
+  height: 680px;
 }

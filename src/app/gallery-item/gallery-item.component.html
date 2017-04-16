@@ -1,3 +1,17 @@
 <div class="gallery-item" (click)="openInfo()">
   <div class="gallery-item-image" [ngStyle]="{ 'background-image': galleryItem.src }"></div>
 </div>
+<div class="social">
+  <div>
+    <i class="material-icons md-dark">comment</i>
+    <div class="counter">{{galleryItem.comments.length}}</div>
+  </div>
+  <div>
+    <i class="material-icons md-dark">thumb_up</i>
+    <div class="counter">{{galleryItem.likes}}</div>
+  </div>
+  <div>
+    <i class="material-icons md-dark">thumb_down</i>
+    <div class="counter">{{galleryItem.dislikes}}</div>
+  </div>
+</div>

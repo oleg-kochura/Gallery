@@ -18,10 +18,21 @@
         <p class="comment">{{comment.message}}</p>
       </div>
     </div>
-    <form action="" class="add-comment-form" (ngSubmit)="addComment(commentsForm); commentsForm.resetForm()" #commentsForm="ngForm">
-      <input type="text" name="author" ngModel required>
-      <textarea name="message" id="" cols="30" ngModel rows="2" required></textarea>
-      <button>add</button>
+
+
+    <form class="add-comment-form" (ngSubmit)="addComment(commentsForm); commentsForm.resetForm()" #commentsForm="ngForm">
+      <md-input-container class="full-size-container">
+        <input mdInput name="author" ngModel placeholder="Nickname">
+      </md-input-container>
+      <div class="row">
+        <md-input-container class="message-container">
+          <textarea mdInput name="message" ngModel placeholder="Your comment..."></textarea>
+        </md-input-container>
+        <button md-button class="send-button" color="accent">
+          <md-icon class="material-icons md-dark">email</md-icon>
+        </button>
+      </div>
     </form>
+
   </section>
 </div>

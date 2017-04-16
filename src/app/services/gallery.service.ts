@@ -28,5 +28,4 @@ export class GalleryService {
   openPopup(data: GalleryImage) {
     this.missionAnnouncedSource.next(data);
   }
-
 }

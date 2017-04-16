@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../services/gallery.service';
 import { GalleryImage } from '../shared/image';
 import { Comment } from '../shared/comment';
-
 import {NgForm} from '@angular/forms';
 
 @Component({

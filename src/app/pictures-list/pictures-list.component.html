@@ -1,1 +1,3 @@
-<gallery-item *ngFor="let img of images" [galleryItem]="img"></gallery-item>
+<div #grid class="gallery-list">
+  <gallery-item *ngFor="let img of images" [galleryItem]="img"></gallery-item>
+</div>

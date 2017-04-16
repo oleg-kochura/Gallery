@@ -18,8 +18,21 @@ var PicturesListComponent = (function () {
     PicturesListComponent.prototype.ngOnInit = function () {
         this.images = this.galleryService.getImages();
     };
+    PicturesListComponent.prototype.ngAfterViewChecked = function () {
+        this.setGrid();
+    };
+    PicturesListComponent.prototype.setGrid = function () {
+        var pckry = new Packery(this.grid.nativeElement, {
+            itemSelector: 'gallery-item',
+            gutter: 10
+        });
+    };
     return PicturesListComponent;
 }());
+__decorate([
+    core_1.ViewChild('grid'),
+    __metadata("design:type", core_1.ElementRef)
+], PicturesListComponent.prototype, "grid", void 0);
 PicturesListComponent = __decorate([
     core_1.Component({
         selector: 'pictures-list',

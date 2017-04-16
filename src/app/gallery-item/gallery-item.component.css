@@ -1,9 +1,82 @@
-.gallery-item {
-  float: left;
+:host {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+:host:nth-child(3n+3) {
   width: 236px;
   height: 200px;
 }
 
+:host:nth-child(3n+2) {
+  width: 236px;
+  height: 410px;
+}
+
+:host:nth-child(3n+1) {
+  width: 482px;
+  height: 200px;
+}
+
+.gallery-item {
+  width: 100%;
+  height: 100%;
+}
+
 .gallery-item-image {
   height: 100%;
+}
+
+.social {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: #f4f4f3;
+  transition: 0.3s ease-out;
+  transform: translateY(60px);
+}
+
+:host:hover .social {
+  transition: 0.3s ease-out;
+  transform: translateY(0);
+}
+
+.social div {
+  position: relative;
+}
+
+.social > div:first-of-type i {
+  transform: rotateY(180deg);
+}
+
+.social .counter {
+  width: 17px;
+  height: 17px;
+  color: #0d7f8a;
+  font: 11px OpenSans;
+  line-height: 13px;
+  text-align: center;
+  border: 2px solid rgba(0, 0, 0, 0.54);
+  border-radius: 50%;
+  background: rgba(255,255,255,1);
+  box-sizing: border-box;
+}
+
+.social > div:first-child {
+  float: left;
+  margin: 15px 0 0 32px;
+}
+
+.social > div:nth-child(2),
+.social > div:nth-child(3) { float: right; }
+
+.social > div:nth-child(2) { margin: 15px 15px 0 0; }
+.social > div:nth-child(3) { margin: 15px 37px 0 0; }
+
+.material-icons {
+  position: absolute;
+  top: 2px;
+  left: -20px;
+  font-size: 30px;
 }
