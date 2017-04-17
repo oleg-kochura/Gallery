@@ -13,10 +13,14 @@ var gallery_service_1 = require("../services/gallery.service");
 var PicturesListComponent = (function () {
     function PicturesListComponent(galleryService) {
         this.galleryService = galleryService;
-        this.images = [];
     }
+    // ngOnInit() {
+    //   this.images = this.galleryService.getImages();
+    // }
     PicturesListComponent.prototype.ngOnInit = function () {
-        this.images = this.galleryService.getImages();
+        // this.galleryService.getRandomImages()
+        //   .subscribe(res => this.images = res);
+        this.images = this.galleryService.getRandomImages();
     };
     PicturesListComponent.prototype.ngAfterViewChecked = function () {
         this.setGrid();

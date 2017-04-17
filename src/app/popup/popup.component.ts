@@ -36,7 +36,7 @@ export class PopupComponent implements  OnInit {
   }
 
   addNewComment(newComment: Comment) {
-      this.data.comments.push(newComment);
+    this.data.comments.push(newComment);
   }
 
 }

@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
+var http_1 = require("@angular/http");
+var http_2 = require("@angular/http");
 // angular-material modules
 var animations_1 = require("@angular/platform-browser/animations");
 var material_1 = require("@angular/material");
@@ -45,8 +47,10 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            http_1.HttpModule,
             animations_1.BrowserAnimationsModule,
-            CustomMaterialModule
+            CustomMaterialModule,
+            http_2.JsonpModule
         ],
         declarations: [
             app_component_1.AppComponent,

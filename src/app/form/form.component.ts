@@ -14,7 +14,13 @@ export class FormComponent {
   @Output() onAddNewComment = new EventEmitter();
 
   addComment(comment: NgForm) {
-    this.newComment = new Comment(comment.value.author, new Date(), comment.value.message);
-    this.onAddNewComment.emit(this.newComment);
+    if ( this.validate(comment.value) ) {
+      this.newComment = new Comment(comment.value.author, new Date(), comment.value.message);
+      this.onAddNewComment.emit(this.newComment);
+    }
+  }
+
+  validate(obj: NgForm) {
+    return Object.keys(obj).every((key) => obj[key]);
   }
 }

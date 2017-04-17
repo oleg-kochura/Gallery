@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef, AfterViewChecked} from '@angular/core';
 import { GalleryImage } from '../shared/image';
 import { GalleryService } from '../services/gallery.service';
+import {Observable} from "rxjs";
 
 declare let Packery: any;
 
@@ -11,16 +12,22 @@ declare let Packery: any;
 })
 
 export class PicturesListComponent implements OnInit, AfterViewChecked {
-  images: GalleryImage[];
+  images: Observable<GalleryImage[]>;
 
   @ViewChild('grid') grid: ElementRef;
 
   constructor(private galleryService: GalleryService) {
-    this.images = [];
   }
+  // ngOnInit() {
+  //   this.images = this.galleryService.getImages();
+  // }
+
 
   ngOnInit() {
-    this.images = this.galleryService.getImages();
+    // this.galleryService.getRandomImages()
+    //   .subscribe(res => this.images = res);
+
+    this.images = this.galleryService.getRandomImages();
   }
 
   ngAfterViewChecked() {
