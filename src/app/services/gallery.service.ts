@@ -21,6 +21,7 @@ export class GalleryService {
   constructor(private http: Http, private _jsonp: Jsonp) {
     this.getRandomImages();
     this.testApi();
+    this.getCommentsList();
   }
 
   // Observable string sources
@@ -32,13 +33,15 @@ export class GalleryService {
   //   return this.images;
   // }
 
+
+  //photos_public
   getRandomImages() {
     let options = {
       tags: "mountains",
       tagmode: "any",
       format: "json"
     };
-    let flickerAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=africa&tagmode=any&format=json&jsoncallback=JSONP_CALLBACK';
+    let flickerAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=lions&tagmode=any&format=json&jsoncallback=JSONP_CALLBACK';
     return this._jsonp.get(flickerAPI)
       .map(res => {
         console.log(res.json());
@@ -53,10 +56,26 @@ export class GalleryService {
       });
     }
 
+  getCommentsList() {
+    return this.http.get('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=7ede1469cfab29f1cf9c03fc77ef1e11&photo_id=15280531798&format=json&nojsoncallback=1')
+      .map(res => res.json().comment)
+  }
 
+
+
+  // flickr.interestingness.getList
   testApi() {
-    return this.http.get(' https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=e9a8cf28694771511e7cc036d86ef637&photo_id=15280531798&format=json&nojsoncallback=1')
-      .subscribe(res => console.log(res.json()));
+    return this.http.get(' https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=7ede1469cfab29f1cf9c03fc77ef1e11&per_page=20&format=json&nojsoncallback=1&auth_token=72157682667838466-b7a098dd26111ee7&api_sig=bfa4a75bc5fa2975a02707be70b47e47')
+      .map(res => {
+        let photosArr = res.json().photos.photo;
+        let newArr = photosArr.map(item => {
+          let src = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`;
+          let newImage = new GalleryImage(src);
+
+          return newImage;
+        });
+        return newArr;
+      });
   }
 
   createImage(src: string) {

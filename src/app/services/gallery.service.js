@@ -29,17 +29,19 @@ var GalleryService = (function () {
         this.missionAnnounced$ = this.missionAnnouncedSource.asObservable();
         this.getRandomImages();
         this.testApi();
+        this.getCommentsList();
     }
     // getImages(): GalleryImage[] {
     //   return this.images;
     // }
+    //photos_public
     GalleryService.prototype.getRandomImages = function () {
         var options = {
             tags: "mountains",
             tagmode: "any",
             format: "json"
         };
-        var flickerAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=africa&tagmode=any&format=json&jsoncallback=JSONP_CALLBACK';
+        var flickerAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=lions&tagmode=any&format=json&jsoncallback=JSONP_CALLBACK';
         return this._jsonp.get(flickerAPI)
             .map(function (res) {
             console.log(res.json());
@@ -52,9 +54,22 @@ var GalleryService = (function () {
             return newArr;
         });
     };
+    GalleryService.prototype.getCommentsList = function () {
+        return this.http.get('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=7ede1469cfab29f1cf9c03fc77ef1e11&photo_id=15280531798&format=json&nojsoncallback=1')
+            .map(function (res) { return res.json().comment; });
+    };
+    // flickr.interestingness.getList
     GalleryService.prototype.testApi = function () {
-        return this.http.get(' https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=e9a8cf28694771511e7cc036d86ef637&photo_id=15280531798&format=json&nojsoncallback=1')
-            .subscribe(function (res) { return console.log(res.json()); });
+        return this.http.get(' https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=7ede1469cfab29f1cf9c03fc77ef1e11&per_page=20&format=json&nojsoncallback=1&auth_token=72157682667838466-b7a098dd26111ee7&api_sig=bfa4a75bc5fa2975a02707be70b47e47')
+            .map(function (res) {
+            var photosArr = res.json().photos.photo;
+            var newArr = photosArr.map(function (item) {
+                var src = "https://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg";
+                var newImage = new image_1.GalleryImage(src);
+                return newImage;
+            });
+            return newArr;
+        });
     };
     GalleryService.prototype.createImage = function (src) {
         var newImage = new image_1.GalleryImage(src);

@@ -27,7 +27,8 @@ export class PicturesListComponent implements OnInit, AfterViewChecked {
     // this.galleryService.getRandomImages()
     //   .subscribe(res => this.images = res);
 
-    this.images = this.galleryService.getRandomImages();
+    // this.images = this.galleryService.getRandomImages();
+    this.images = this.galleryService.testApi();
   }
 
   ngAfterViewChecked() {

@@ -20,7 +20,8 @@ var PicturesListComponent = (function () {
     PicturesListComponent.prototype.ngOnInit = function () {
         // this.galleryService.getRandomImages()
         //   .subscribe(res => this.images = res);
-        this.images = this.galleryService.getRandomImages();
+        // this.images = this.galleryService.getRandomImages();
+        this.images = this.galleryService.testApi();
     };
     PicturesListComponent.prototype.ngAfterViewChecked = function () {
         this.setGrid();
