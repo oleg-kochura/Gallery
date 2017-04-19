@@ -17,7 +17,7 @@ export class PopupComponent implements  OnInit {
   }
 
   ngOnInit() {
-    this.galleryService.missionAnnounced$.subscribe((data) => {
+    this.galleryService.popupData.subscribe((data) => {
       this.data = data;
       this.open();
     })

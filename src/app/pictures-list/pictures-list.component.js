@@ -14,14 +14,9 @@ var PicturesListComponent = (function () {
     function PicturesListComponent(galleryService) {
         this.galleryService = galleryService;
     }
-    // ngOnInit() {
-    //   this.images = this.galleryService.getImages();
-    // }
     PicturesListComponent.prototype.ngOnInit = function () {
-        // this.galleryService.getRandomImages()
-        //   .subscribe(res => this.images = res);
-        // this.images = this.galleryService.getRandomImages();
-        this.images = this.galleryService.testApi();
+        this.galleryService.getPhotos();
+        this.images = this.galleryService.photos;
     };
     PicturesListComponent.prototype.ngAfterViewChecked = function () {
         this.setGrid();

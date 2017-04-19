@@ -23,6 +23,7 @@ var form_component_1 = require("./form/form.component");
 var comments_list_component_1 = require("./comments-list/comments-list.component");
 // services
 var gallery_service_1 = require("./services/gallery.service");
+var flickrApi_service_1 = require("./services/flickrApi.service");
 require("hammerjs");
 // custom NgModule, to group all material modules into one module
 var CustomMaterialModule = (function () {
@@ -61,7 +62,7 @@ AppModule = __decorate([
             form_component_1.FormComponent,
             comments_list_component_1.CommentsListComponent
         ],
-        providers: [gallery_service_1.GalleryService],
+        providers: [gallery_service_1.GalleryService, flickrApi_service_1.ApiService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

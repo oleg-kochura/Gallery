@@ -19,6 +19,7 @@ import { CommentsListComponent }  from './comments-list/comments-list.component'
 
 // services
 import { GalleryService } from './services/gallery.service';
+import { ApiService } from './services/flickrApi.service'
 
 import 'hammerjs';
 
@@ -49,7 +50,7 @@ export class CustomMaterialModule { }
     FormComponent,
     CommentsListComponent
   ],
-  providers: [GalleryService],
+  providers: [GalleryService, ApiService],
   bootstrap: [AppComponent]
 })
 

@@ -9,6 +9,5 @@ export class GalleryImage {
 
   constructor(src: string) {
     this.src = `url(${src})`
-
   }
 }

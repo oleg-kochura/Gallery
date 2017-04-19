@@ -16,7 +16,7 @@ var PopupComponent = (function () {
     }
     PopupComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.galleryService.missionAnnounced$.subscribe(function (data) {
+        this.galleryService.popupData.subscribe(function (data) {
             _this.data = data;
             _this.open();
         });

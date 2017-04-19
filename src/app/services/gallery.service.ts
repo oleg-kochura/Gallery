@@ -1,90 +1,65 @@
 import {Injectable} from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
-
-import { images } from '../shared/data';
 import { GalleryImage } from '../shared/image';
 
+import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {Jsonp} from '@angular/http';
+import { images } from '../shared/data';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { ApiService } from './flickrApi.service'
 
 @Injectable()
 export class GalleryService {
-  images: GalleryImage[] = images;
-  imagesTest: any = [];
-  baseUrl: string = 'https://www.flickr.com/photos/';
+  private baseUrl: string;
+  private dataStore: {
+    photos: GalleryImage[]
+  };
 
-  constructor(private http: Http, private _jsonp: Jsonp) {
-    this.getRandomImages();
-    this.testApi();
-    this.getCommentsList();
+  private _photos: Subject<GalleryImage[]>;
+  private _popupData: Subject<GalleryImage>;
+
+  photos: Observable<GalleryImage[]>;
+  popupData: Observable<GalleryImage>;
+
+  constructor(private http: Http, public api: ApiService) {
+    this.baseUrl = 'https://www.flickr.com/photos/';
+    this.dataStore = { photos: [] };
+    this._photos = new Subject<GalleryImage[]>();
+    this.photos = this._photos.asObservable();
+    this._popupData = new Subject<GalleryImage>();
+    this.popupData = this._popupData.asObservable();
   }
 
-  // Observable string sources
-  private missionAnnouncedSource = new Subject<GalleryImage>();
-  // Observable string streams
-  missionAnnounced$ = this.missionAnnouncedSource.asObservable();
+  getPhotos() {
+    this.api.getPhotos().subscribe(res => {
+      this.dataStore.photos = res;
+      this._photos.next(res);
+    });
+  }
 
-  // getImages(): GalleryImage[] {
-  //   return this.images;
+  getCommentsList(id) {
+    this.api.getCommentsList(id);
+  }
+
+  // getCommentsList() {
+  //   return this.http.get('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=98a0e431c34ee80634479fda5b7971d3&photo_id=33724465430&format=json&nojsoncallback=1')
+  //     .map(res => res)
+  //     .subscribe(res => console.log(res.json().comments.comment));
   // }
-
-
-  //photos_public
-  getRandomImages() {
-    let options = {
-      tags: "mountains",
-      tagmode: "any",
-      format: "json"
-    };
-    let flickerAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=lions&tagmode=any&format=json&jsoncallback=JSONP_CALLBACK';
-    return this._jsonp.get(flickerAPI)
-      .map(res => {
-        console.log(res.json());
-        let photosArr = res.json().items;
-        let newArr = photosArr.map((item: any) => {
-          let src = item.media.m.replace('_m', '_b');
-          let newImage = new GalleryImage(src);
-
-          return newImage;
-        });
-        return newArr;
-      });
-    }
-
-  getCommentsList() {
-    return this.http.get('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=7ede1469cfab29f1cf9c03fc77ef1e11&photo_id=15280531798&format=json&nojsoncallback=1')
-      .map(res => res.json().comment)
-  }
-
-
-
-  // flickr.interestingness.getList
-  testApi() {
-    return this.http.get(' https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=7ede1469cfab29f1cf9c03fc77ef1e11&per_page=20&format=json&nojsoncallback=1&auth_token=72157682667838466-b7a098dd26111ee7&api_sig=bfa4a75bc5fa2975a02707be70b47e47')
-      .map(res => {
-        let photosArr = res.json().photos.photo;
-        let newArr = photosArr.map(item => {
-          let src = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`;
-          let newImage = new GalleryImage(src);
-
-          return newImage;
-        });
-        return newArr;
-      });
-  }
 
   createImage(src: string) {
     let newImage = new GalleryImage(src);
-    this.images.push(newImage);
-    console.log(this.images);
+    this.dataStore.photos.push(newImage);
+    this._photos.next(this.dataStore.photos);
   }
 
   openPopup(data: GalleryImage) {
-    this.missionAnnouncedSource.next(data);
+    this._popupData.next(data);
+    console.log(data);
   }
+
 }

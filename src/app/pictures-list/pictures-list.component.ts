@@ -18,17 +18,10 @@ export class PicturesListComponent implements OnInit, AfterViewChecked {
 
   constructor(private galleryService: GalleryService) {
   }
-  // ngOnInit() {
-  //   this.images = this.galleryService.getImages();
-  // }
-
 
   ngOnInit() {
-    // this.galleryService.getRandomImages()
-    //   .subscribe(res => this.images = res);
-
-    // this.images = this.galleryService.getRandomImages();
-    this.images = this.galleryService.testApi();
+    this.galleryService.getPhotos();
+    this.images = this.galleryService.photos;
   }
 
   ngAfterViewChecked() {
