@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var Subject_1 = require("rxjs/Subject");
-var image_1 = require("../shared/image");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
@@ -31,10 +30,11 @@ var GalleryService = (function () {
         this.api.getPhotos().subscribe(function (res) {
             _this.dataStore.photos = res;
             _this._photos.next(res);
+            console.log(res);
         });
     };
     GalleryService.prototype.getCommentsList = function (id) {
-        this.api.getCommentsList(id);
+        return this.api.getCommentsList(id);
     };
     // getCommentsList() {
     //   return this.http.get('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=98a0e431c34ee80634479fda5b7971d3&photo_id=33724465430&format=json&nojsoncallback=1')
@@ -42,13 +42,14 @@ var GalleryService = (function () {
     //     .subscribe(res => console.log(res.json().comments.comment));
     // }
     GalleryService.prototype.createImage = function (src) {
-        var newImage = new image_1.GalleryImage(src);
-        this.dataStore.photos.push(newImage);
-        this._photos.next(this.dataStore.photos);
+        // let newImage = new GalleryImage(src);
+        // this.dataStore.photos.push(newImage);
+        // this._photos.next(this.dataStore.photos);
     };
     GalleryService.prototype.openPopup = function (data) {
-        this._popupData.next(data);
-        console.log(data);
+        this.getCommentsList(data.id).subscribe(function (res) { return console.log(res.json().comments.comment); });
+        // this._popupData.next(data);
+        // console.log(data);
     };
     return GalleryService;
 }());

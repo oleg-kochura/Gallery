@@ -38,11 +38,12 @@ export class GalleryService {
     this.api.getPhotos().subscribe(res => {
       this.dataStore.photos = res;
       this._photos.next(res);
+      console.log(res);
     });
   }
 
   getCommentsList(id) {
-    this.api.getCommentsList(id);
+   return this.api.getCommentsList(id);
   }
 
   // getCommentsList() {
@@ -52,14 +53,15 @@ export class GalleryService {
   // }
 
   createImage(src: string) {
-    let newImage = new GalleryImage(src);
-    this.dataStore.photos.push(newImage);
-    this._photos.next(this.dataStore.photos);
+    // let newImage = new GalleryImage(src);
+    // this.dataStore.photos.push(newImage);
+    // this._photos.next(this.dataStore.photos);
   }
 
   openPopup(data: GalleryImage) {
-    this._popupData.next(data);
-    console.log(data);
+    this.getCommentsList(data.id).subscribe(res => console.log(res.json().comments.comment));
+    // this._popupData.next(data);
+    // console.log(data);
   }
 
 }

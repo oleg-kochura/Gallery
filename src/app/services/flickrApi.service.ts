@@ -33,7 +33,7 @@ export class ApiService {
         console.log(photosArr);
         let newArr = photosArr.map((item: any) => {
           let src = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`;
-          let newImage = new GalleryImage(src);
+          let newImage = new GalleryImage(src, item.id);
 
           return newImage;
         });
@@ -48,7 +48,6 @@ export class ApiService {
 
     return this.http.get(`${this.api.baseUrl}flickr.photos.comments.getList&api_key=${this.api.api_key}&photo_id=${options.photo_id}&format=json&nojsoncallback=1`)
       .map(res => res)
-      .subscribe(res => console.log(res.json().comments.comment));
   }
 
   //flickr photos_public

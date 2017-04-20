@@ -32,7 +32,7 @@ var ApiService = (function () {
             console.log(photosArr);
             var newArr = photosArr.map(function (item) {
                 var src = "https://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg";
-                var newImage = new image_1.GalleryImage(src);
+                var newImage = new image_1.GalleryImage(src, item.id);
                 return newImage;
             });
             return newArr;
@@ -43,8 +43,7 @@ var ApiService = (function () {
             photo_id: id
         };
         return this.http.get(this.api.baseUrl + "flickr.photos.comments.getList&api_key=" + this.api.api_key + "&photo_id=" + options.photo_id + "&format=json&nojsoncallback=1")
-            .map(function (res) { return res; })
-            .subscribe(function (res) { return console.log(res.json().comments.comment); });
+            .map(function (res) { return res; });
     };
     return ApiService;
 }());
