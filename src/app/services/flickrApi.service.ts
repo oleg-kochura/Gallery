@@ -12,13 +12,13 @@ export class ApiService {
   private api: {
     baseUrl: string,
     api_key: string
-  }
+  };
 
   constructor(private http: Http) {
     this.api = {
       baseUrl: 'https://api.flickr.com/services/rest/?method=',
       api_key: `98a0e431c34ee80634479fda5b7971d3`
-    }
+    };
   }
 
   // flickr.interestingness.getList
@@ -41,14 +41,15 @@ export class ApiService {
       });
   }
 
-  getCommentsList(id) {
+  getCommentsList(id: any) {
     let options = {
       photo_id: id
     };
 
     return this.http.get(`${this.api.baseUrl}flickr.photos.comments.getList&api_key=${this.api.api_key}&photo_id=${options.photo_id}&format=json&nojsoncallback=1`)
-      .map(res => res)
+      .map(res => res.json().comments.comment)
   }
+
 
   //flickr photos_public
   // getRandomImages() {

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var Subject_1 = require("rxjs/Subject");
+var image_1 = require("../shared/image");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
@@ -36,20 +37,27 @@ var GalleryService = (function () {
     GalleryService.prototype.getCommentsList = function (id) {
         return this.api.getCommentsList(id);
     };
-    // getCommentsList() {
-    //   return this.http.get('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=98a0e431c34ee80634479fda5b7971d3&photo_id=33724465430&format=json&nojsoncallback=1')
-    //     .map(res => res)
-    //     .subscribe(res => console.log(res.json().comments.comment));
-    // }
     GalleryService.prototype.createImage = function (src) {
-        // let newImage = new GalleryImage(src);
-        // this.dataStore.photos.push(newImage);
-        // this._photos.next(this.dataStore.photos);
+        var newImage = new image_1.GalleryImage(src);
+        this.dataStore.photos.push(newImage);
+        this._photos.next(this.dataStore.photos);
     };
     GalleryService.prototype.openPopup = function (data) {
-        this.getCommentsList(data.id).subscribe(function (res) { return console.log(res.json().comments.comment); });
-        // this._popupData.next(data);
-        // console.log(data);
+        var _this = this;
+        this._popupData.next(data);
+        this.getCommentsList(data.id)
+            .subscribe(function (comments) {
+            data.comments = _this.setUsersIcons(comments);
+            _this._popupData.next(data);
+            console.log(data);
+        });
+        console.log(data);
+    };
+    GalleryService.prototype.setUsersIcons = function (data) {
+        data.forEach(function (item) {
+            item.userIcon = "http://farm" + item.iconfarm + ".staticflickr.com/" + item.iconserver + "/buddyicons/" + item.author + ".jpg";
+        });
+        return data;
     };
     return GalleryService;
 }());

@@ -42,26 +42,34 @@ export class GalleryService {
     });
   }
 
-  getCommentsList(id) {
-   return this.api.getCommentsList(id);
+  getCommentsList(id: any) {
+    return this.api.getCommentsList(id);
   }
 
-  // getCommentsList() {
-  //   return this.http.get('https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=98a0e431c34ee80634479fda5b7971d3&photo_id=33724465430&format=json&nojsoncallback=1')
-  //     .map(res => res)
-  //     .subscribe(res => console.log(res.json().comments.comment));
-  // }
-
   createImage(src: string) {
-    // let newImage = new GalleryImage(src);
-    // this.dataStore.photos.push(newImage);
-    // this._photos.next(this.dataStore.photos);
+    let newImage = new GalleryImage(src);
+    this.dataStore.photos.push(newImage);
+    this._photos.next(this.dataStore.photos);
   }
 
   openPopup(data: GalleryImage) {
-    this.getCommentsList(data.id).subscribe(res => console.log(res.json().comments.comment));
-    // this._popupData.next(data);
-    // console.log(data);
+    this._popupData.next(data);
+
+    this.getCommentsList(data.id)
+      .subscribe(comments => {
+        data.comments = this.setUsersIcons(comments);
+
+        this._popupData.next(data);
+        console.log(data);
+      });
+    console.log(data);
   }
 
+  setUsersIcons(data: any) {
+    data.forEach((item: any) => {
+      item.userIcon = `http://farm${item.iconfarm}.staticflickr.com/${item.iconserver}/buddyicons/${item.author}.jpg`
+    });
+
+    return data;
+  }
 }

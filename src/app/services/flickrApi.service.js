@@ -43,7 +43,7 @@ var ApiService = (function () {
             photo_id: id
         };
         return this.http.get(this.api.baseUrl + "flickr.photos.comments.getList&api_key=" + this.api.api_key + "&photo_id=" + options.photo_id + "&format=json&nojsoncallback=1")
-            .map(function (res) { return res; });
+            .map(function (res) { return res.json().comments.comment; });
     };
     return ApiService;
 }());

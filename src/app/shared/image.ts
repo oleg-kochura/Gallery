@@ -8,7 +8,7 @@ export class GalleryImage {
   dislikes: number = 0;
   id: number;
 
-  constructor(src: string, id: number) {
+  constructor(src: string, id?: number) {
     this.src = `url(${src})`;
     this.id = id;
   }

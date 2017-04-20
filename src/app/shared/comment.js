@@ -1,9 +1,9 @@
 "use strict";
 var Comment = (function () {
-    function Comment(author, date, message) {
-        this.author = author;
-        this.date = date;
-        this.message = message;
+    function Comment(authorname, datecreate, _content) {
+        this.authorname = authorname;
+        this.datecreate = datecreate;
+        this._content = _content;
     }
     return Comment;
 }());
