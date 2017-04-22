@@ -22,11 +22,8 @@ var ApiService = (function () {
         };
     }
     // flickr.interestingness.getList
-    ApiService.prototype.getPhotos = function () {
-        var options = {
-            per_page: 20
-        };
-        return this.http.get(this.api.baseUrl + "flickr.interestingness.getList&api_key=" + this.api.api_key + "&per_page=" + options.per_page + "&format=json&nojsoncallback=1")
+    ApiService.prototype.getPhotos = function (per_page) {
+        return this.http.get(this.api.baseUrl + "flickr.interestingness.getList&api_key=" + this.api.api_key + "&per_page=" + per_page + "&format=json&nojsoncallback=1")
             .map(function (res) {
             var photosArr = res.json().photos.photo;
             console.log(photosArr);

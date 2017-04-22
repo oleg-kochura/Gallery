@@ -1,9 +1,7 @@
-import {Component, OnInit, ViewChild, ElementRef, AfterViewChecked} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { GalleryImage } from '../shared/image';
 import { GalleryService } from '../services/gallery.service';
 import {Observable} from "rxjs";
-
-declare let Packery: any;
 
 @Component({
   selector: 'pictures-list',
@@ -11,7 +9,7 @@ declare let Packery: any;
   styleUrls: ['./pictures-list.component.css'],
 })
 
-export class PicturesListComponent implements OnInit, AfterViewChecked {
+export class PicturesListComponent implements OnInit {
   images: Observable<GalleryImage[]>;
 
   @ViewChild('grid') grid: ElementRef;
@@ -20,19 +18,10 @@ export class PicturesListComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.galleryService.getPhotos();
+    let photosPerPage = 4;
+
+    this.galleryService.getPhotos(photosPerPage);
     this.images = this.galleryService.photos;
-  }
-
-  ngAfterViewChecked() {
-    this.setGrid();
-  }
-
-  setGrid() {
-    let pckry = new Packery(this.grid.nativeElement, {
-      itemSelector: 'gallery-item',
-      gutter: 10
-    });
   }
 
 }

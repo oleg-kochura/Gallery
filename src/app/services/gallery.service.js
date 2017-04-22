@@ -26,9 +26,9 @@ var GalleryService = (function () {
         this._popupData = new Subject_1.Subject();
         this.popupData = this._popupData.asObservable();
     }
-    GalleryService.prototype.getPhotos = function () {
+    GalleryService.prototype.getPhotos = function (per_page) {
         var _this = this;
-        this.api.getPhotos().subscribe(function (res) {
+        this.api.getPhotos(per_page).subscribe(function (res) {
             _this.dataStore.photos = res;
             _this._photos.next(res);
             console.log(res);
@@ -54,8 +54,14 @@ var GalleryService = (function () {
         console.log(data);
     };
     GalleryService.prototype.setUsersIcons = function (data) {
+        var baseIconUrl = "https://www.flickr.com/images/buddyicon.gif";
         data.forEach(function (item) {
-            item.userIcon = "http://farm" + item.iconfarm + ".staticflickr.com/" + item.iconserver + "/buddyicons/" + item.author + ".jpg";
+            if (item.iconfarm && item.iconserver) {
+                item.userIcon = "http://farm" + item.iconfarm + ".staticflickr.com/" + item.iconserver + "/buddyicons/" + item.author + ".jpg";
+            }
+            else {
+                item.userIcon = baseIconUrl;
+            }
         });
         return data;
     };

@@ -7,8 +7,9 @@
 }
 
 .container {
-  width: 980px;
+  width: 974px;
   height: 680px;
+  overflow-x: scroll;
 }
 
 h1 {
@@ -19,9 +20,4 @@ h1 {
 
 placeholder {
   float: left;
-}
-
-pictures-list {
-  width: 980px;
-  height: 680px;
 }

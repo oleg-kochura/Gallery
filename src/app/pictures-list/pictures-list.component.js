@@ -15,17 +15,9 @@ var PicturesListComponent = (function () {
         this.galleryService = galleryService;
     }
     PicturesListComponent.prototype.ngOnInit = function () {
-        this.galleryService.getPhotos();
+        var photosPerPage = 4;
+        this.galleryService.getPhotos(photosPerPage);
         this.images = this.galleryService.photos;
-    };
-    PicturesListComponent.prototype.ngAfterViewChecked = function () {
-        this.setGrid();
-    };
-    PicturesListComponent.prototype.setGrid = function () {
-        var pckry = new Packery(this.grid.nativeElement, {
-            itemSelector: 'gallery-item',
-            gutter: 10
-        });
     };
     return PicturesListComponent;
 }());

@@ -1,11 +1,6 @@
-/*.gallery-list {*/
-  /*width: 980px;*/
-  /*height: 680px;*/
-  /*overflow-x: scroll;*/
-/*}*/
-
 :host {
-  width: 980px;
-  height: 680px;
-  overflow-x: scroll;
+  display: block;
+}
+.grid {
+  height: 640px;
 }

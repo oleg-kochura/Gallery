@@ -3,8 +3,6 @@ import { Subject }    from 'rxjs/Subject';
 import { GalleryImage } from '../shared/image';
 
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
-import {Jsonp} from '@angular/http';
-import { images } from '../shared/data';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -34,8 +32,8 @@ export class GalleryService {
     this.popupData = this._popupData.asObservable();
   }
 
-  getPhotos() {
-    this.api.getPhotos().subscribe(res => {
+  getPhotos(per_page: number) {
+    this.api.getPhotos(per_page).subscribe(res => {
       this.dataStore.photos = res;
       this._photos.next(res);
       console.log(res);
@@ -66,8 +64,14 @@ export class GalleryService {
   }
 
   setUsersIcons(data: any) {
+    let baseIconUrl = `https://www.flickr.com/images/buddyicon.gif`;
+
     data.forEach((item: any) => {
-      item.userIcon = `http://farm${item.iconfarm}.staticflickr.com/${item.iconserver}/buddyicons/${item.author}.jpg`
+      if (item.iconfarm && item.iconserver) {
+        item.userIcon = `http://farm${item.iconfarm}.staticflickr.com/${item.iconserver}/buddyicons/${item.author}.jpg`
+      } else {
+        item.userIcon = baseIconUrl;
+      }
     });
 
     return data;
