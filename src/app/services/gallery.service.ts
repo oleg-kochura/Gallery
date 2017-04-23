@@ -1,18 +1,12 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
 import { GalleryImage } from '../shared/image';
-
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
-
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
+import { Observable } from 'rxjs/Observable';
 import { ApiService } from './flickrApi.service'
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class GalleryService {
-  private baseUrl: string;
   private dataStore: {
     photos: GalleryImage[]
   };
@@ -23,8 +17,7 @@ export class GalleryService {
   photos: Observable<GalleryImage[]>;
   popupData: Observable<GalleryImage>;
 
-  constructor(private http: Http, public api: ApiService) {
-    this.baseUrl = 'https://www.flickr.com/photos/';
+  constructor(private api: ApiService) {
     this.dataStore = { photos: [] };
     this._photos = new Subject<GalleryImage[]>();
     this.photos = this._photos.asObservable();
@@ -40,7 +33,7 @@ export class GalleryService {
     });
   }
 
-  getCommentsList(id: any) {
+  getCommentsList(id: number) {
     return this.api.getCommentsList(id);
   }
 
@@ -56,7 +49,6 @@ export class GalleryService {
     this.getCommentsList(data.id)
       .subscribe(comments => {
         data.comments = this.setUsersIcons(comments);
-
         this._popupData.next(data);
         console.log(data);
       });

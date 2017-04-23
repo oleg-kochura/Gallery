@@ -8,7 +8,7 @@
       </button>
     </md-toolbar>
 
-    <div class="image-wrapper" [ngStyle]="{ 'background-image': data.src }"></div>
+    <div class="image-wrapper" [ngStyle]="{ 'background-image': 'url(' + data.src + ')'  }"></div>
     <md-toolbar>
       <button md-icon-button class="like" (click)="inc('likes')">
         <i class="material-icons md-dark">thumb_up</i>

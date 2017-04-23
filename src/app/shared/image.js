@@ -4,7 +4,7 @@ var GalleryImage = (function () {
         this.comments = [];
         this.likes = 0;
         this.dislikes = 0;
-        this.src = "url(" + src + ")";
+        this.src = src;
         this.id = id;
     }
     return GalleryImage;

@@ -15,12 +15,12 @@ var FormComponent = (function () {
         this.onAddNewComment = new core_1.EventEmitter();
     }
     FormComponent.prototype.addComment = function (comment) {
-        if (this.validate(comment.value)) {
+        if (this.isValid(comment.value)) {
             this.newComment = new comment_1.Comment(comment.value.author, new Date(), comment.value.message);
             this.onAddNewComment.emit(this.newComment);
         }
     };
-    FormComponent.prototype.validate = function (obj) {
+    FormComponent.prototype.isValid = function (obj) {
         return Object.keys(obj).every(function (key) { return obj[key]; });
     };
     return FormComponent;

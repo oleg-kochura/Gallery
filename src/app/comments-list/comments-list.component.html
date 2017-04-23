@@ -15,7 +15,7 @@
 
   <md-card *ngFor="let comment of comments">
     <md-card-header>
-      <div md-card-avatar class="card-item-avatar" [ngStyle]="{ 'background-image': 'url('+comment.userIcon+')' }"></div>
+      <div md-card-avatar class="card-item-avatar" [ngStyle]="{ 'background-image': 'url(' + comment.userIcon + ')' }"></div>
       <md-card-title>{{comment.authorname}}</md-card-title>
       <span class="spacer"></span>
       <p class="date">{{comment.datecreate | date:'HH:mm:ss'}}</p>

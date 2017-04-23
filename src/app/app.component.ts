@@ -1,4 +1,4 @@
-import {Component, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild, AfterViewChecked } from '@angular/core';
 import { PicturesListComponent }  from './pictures-list/pictures-list.component';
 
 declare let Packery: any;
@@ -23,6 +23,7 @@ export class AppComponent implements AfterViewChecked {
       itemSelector: 'gallery-item',
       gutter: 10,
       horizontal: true,
+      percentPosition: true,
       transitionDuration: '0.2s'
     });
   }

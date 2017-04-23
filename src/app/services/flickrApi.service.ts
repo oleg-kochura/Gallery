@@ -1,10 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
 import { GalleryImage } from '../shared/image';
 
 @Injectable()
@@ -17,12 +14,12 @@ export class ApiService {
   constructor(private http: Http) {
     this.api = {
       baseUrl: 'https://api.flickr.com/services/rest/?method=',
-      api_key: `98a0e431c34ee80634479fda5b7971d3`
+      api_key: `98a0e431c34ee80634479fda5b7971d3`  //my private api_key for flickr.com  NOT FOR USE!
     };
   }
 
   // flickr.interestingness.getList
-  getPhotos(per_page: number)  {
+  getPhotos(per_page: number) {
     return this.http.get(`${this.api.baseUrl}flickr.interestingness.getList&api_key=${this.api.api_key}&per_page=${per_page}&format=json&nojsoncallback=1`)
       .map(res => {
         let photosArr = res.json().photos.photo;
@@ -45,27 +42,4 @@ export class ApiService {
     return this.http.get(`${this.api.baseUrl}flickr.photos.comments.getList&api_key=${this.api.api_key}&photo_id=${options.photo_id}&format=json&nojsoncallback=1`)
       .map(res => res.json().comments.comment)
   }
-
-
-  //flickr photos_public
-  // getRandomImages() {
-  //   let options = {
-  //     tags: "mountains",
-  //     tagmode: "any",
-  //     format: "json"
-  //   };
-  //   let flickerAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=lions&tagmode=any&format=json&jsoncallback=JSONP_CALLBACK';
-  //   return this._jsonp.get(flickerAPI)
-  //     .map(res => {
-  //       console.log(res.json());
-  //       let photosArr = res.json().items;
-  //       let newArr = photosArr.map((item: any) => {
-  //         let src = item.media.m.replace('_m', '_b');
-  //         let newImage = new GalleryImage(src);
-  //
-  //         return newImage;
-  //       });
-  //       return newArr;
-  //     });
-  //   }
 }

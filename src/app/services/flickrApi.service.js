@@ -18,7 +18,7 @@ var ApiService = (function () {
         this.http = http;
         this.api = {
             baseUrl: 'https://api.flickr.com/services/rest/?method=',
-            api_key: "98a0e431c34ee80634479fda5b7971d3"
+            api_key: "98a0e431c34ee80634479fda5b7971d3" //my private api_key for flickr.com  NOT FOR USE!
         };
     }
     // flickr.interestingness.getList

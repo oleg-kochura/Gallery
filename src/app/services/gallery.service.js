@@ -11,15 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var Subject_1 = require("rxjs/Subject");
 var image_1 = require("../shared/image");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/map");
-require("rxjs/add/operator/catch");
 var flickrApi_service_1 = require("./flickrApi.service");
+require("rxjs/add/operator/catch");
 var GalleryService = (function () {
-    function GalleryService(http, api) {
-        this.http = http;
+    function GalleryService(api) {
         this.api = api;
-        this.baseUrl = 'https://www.flickr.com/photos/';
         this.dataStore = { photos: [] };
         this._photos = new Subject_1.Subject();
         this.photos = this._photos.asObservable();
@@ -69,7 +65,7 @@ var GalleryService = (function () {
 }());
 GalleryService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, flickrApi_service_1.ApiService])
+    __metadata("design:paramtypes", [flickrApi_service_1.ApiService])
 ], GalleryService);
 exports.GalleryService = GalleryService;
 //# sourceMappingURL=gallery.service.js.map

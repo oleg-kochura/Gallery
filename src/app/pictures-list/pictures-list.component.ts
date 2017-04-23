@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GalleryImage } from '../shared/image';
 import { GalleryService } from '../services/gallery.service';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'pictures-list',
@@ -18,7 +18,7 @@ export class PicturesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    let photosPerPage = 4;
+    let photosPerPage = 10;
 
     this.galleryService.getPhotos(photosPerPage);
     this.images = this.galleryService.photos;

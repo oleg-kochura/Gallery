@@ -23,6 +23,7 @@ var AppComponent = (function () {
             itemSelector: 'gallery-item',
             gutter: 10,
             horizontal: true,
+            percentPosition: true,
             transitionDuration: '0.2s'
         });
     };
