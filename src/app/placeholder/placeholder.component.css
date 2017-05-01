@@ -1,22 +1,65 @@
-.placeholder {
+:host {
   display: block;
-  position: relative;
+  position: absolute;
+  right: -246px;
   width: 236px;
   height: 200px;
-  background: #fff;
-}
-
-.placeholder:before {
-  position: absolute;
-  content: '';
-  width: 50px;
-  height: 50px;
-  background: url(../app/shared/img/plus-icon.png) no-repeat 50% #21b8c6;
-  border-radius: 50%;
-  top: 64px;
-  left: 70px;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .placeholder input {
   display: none;
 }
+
+.placeholder {
+  height: 100%;
+  align-items: center;
+  background-color: #efefef;
+  background-color: rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  outline: 3px dashed #ccc;
+  outline-offset: 5px;
+}
+
+.placeholder i {
+  pointer-events: none;
+}
+
+.placeholder,
+.placeholder i {
+  transition: all 100ms ease-in;
+}
+
+.placeholder i {
+  color: #eee;
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 5em;
+}
+
+
+/*.placeholder {*/
+  /*display: block;*/
+  /*position: absolute;*/
+  /*width: 236px;*/
+  /*height: 200px;*/
+  /*background: #fff;*/
+  /*right: -246px;*/
+/*}*/
+
+/*.placeholder:before {*/
+  /*position: absolute;*/
+  /*content: '';*/
+  /*width: 50px;*/
+  /*height: 50px;*/
+  /*!*background: url(../shared/img/plus-icon.png) no-repeat 50% #21b8c6;*!*/
+  /*border-radius: 50%;*/
+  /*top: 64px;*/
+  /*left: 70px;*/
+/*}*/
+
+/*.placeholder input {*/
+  /*display: none;*/
+/*}*/

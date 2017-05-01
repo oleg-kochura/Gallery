@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Comment } from '../shared/comment';
+import { Comment } from '../models';
 import { NgForm } from '@angular/forms';
 
 @Component({

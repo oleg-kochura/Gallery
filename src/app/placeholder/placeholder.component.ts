@@ -11,7 +11,7 @@ export class PlaceholderComponent {
 
   constructor(private galleryService: GalleryService) { }
 
-  onChange(event: any) {
+  handleInputChange(event: any) {
     let file = event.srcElement.files[0];
     let reader = new FileReader();
 

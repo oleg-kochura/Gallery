@@ -10,4 +10,15 @@ var Comment = (function () {
     return Comment;
 }());
 exports.Comment = Comment;
-//# sourceMappingURL=comment.js.map
+var GalleryImage = (function () {
+    function GalleryImage(src, id) {
+        this.comments = [];
+        this.likes = 0;
+        this.dislikes = 0;
+        this.src = src || '';
+        this.id = id;
+    }
+    return GalleryImage;
+}());
+exports.GalleryImage = GalleryImage;
+//# sourceMappingURL=models.js.map

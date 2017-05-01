@@ -14,7 +14,7 @@ var PlaceholderComponent = (function () {
     function PlaceholderComponent(galleryService) {
         this.galleryService = galleryService;
     }
-    PlaceholderComponent.prototype.onChange = function (event) {
+    PlaceholderComponent.prototype.handleInputChange = function (event) {
         var file = event.srcElement.files[0];
         var reader = new FileReader();
         reader.onload = this.handleReaderLoaded.bind(this);

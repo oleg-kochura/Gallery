@@ -9,17 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var Subject_1 = require("rxjs/Subject");
-var image_1 = require("../shared/image");
+var models_1 = require("../models");
 var flickrApi_service_1 = require("./flickrApi.service");
+var Subject_1 = require("rxjs/Subject");
 require("rxjs/add/operator/catch");
 var GalleryService = (function () {
     function GalleryService(api) {
         this.api = api;
-        this.dataStore = { photos: [] };
+        this.dataStore = {
+            photos: []
+        };
         this._photos = new Subject_1.Subject();
-        this.photos = this._photos.asObservable();
         this._popupData = new Subject_1.Subject();
+        this.photos = this._photos.asObservable();
         this.popupData = this._popupData.asObservable();
     }
     GalleryService.prototype.getPhotos = function (per_page) {
@@ -34,7 +36,7 @@ var GalleryService = (function () {
         return this.api.getCommentsList(id);
     };
     GalleryService.prototype.createImage = function (src) {
-        var newImage = new image_1.GalleryImage(src);
+        var newImage = new models_1.GalleryImage(src);
         this.dataStore.photos.push(newImage);
         this._photos.next(this.dataStore.photos);
     };

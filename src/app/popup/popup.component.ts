@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../services/gallery.service';
-import { GalleryImage } from '../shared/image';
-import { Comment } from '../shared/comment';
+import { Comment, GalleryImage } from '../models';
 
 @Component({
   selector: 'popup',

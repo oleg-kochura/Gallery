@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var comment_1 = require("../shared/comment");
+var models_1 = require("../models");
 var FormComponent = (function () {
     function FormComponent() {
         this.onAddNewComment = new core_1.EventEmitter();
     }
     FormComponent.prototype.addComment = function (comment) {
         if (this.isValid(comment.value)) {
-            this.newComment = new comment_1.Comment(comment.value.author, new Date(), comment.value.message);
+            this.newComment = new models_1.Comment(comment.value.author, new Date(), comment.value.message);
             this.onAddNewComment.emit(this.newComment);
         }
     };

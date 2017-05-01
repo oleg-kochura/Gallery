@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var image_1 = require("../shared/image");
+var models_1 = require("../models");
 var gallery_service_1 = require("../services/gallery.service");
 var GalleryItemComponent = (function () {
     function GalleryItemComponent(galleryService) {
@@ -22,7 +22,7 @@ var GalleryItemComponent = (function () {
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", image_1.GalleryImage)
+    __metadata("design:type", models_1.GalleryImage)
 ], GalleryItemComponent.prototype, "galleryItem", void 0);
 GalleryItemComponent = __decorate([
     core_1.Component({

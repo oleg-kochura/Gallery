@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { GalleryImage } from '../shared/image';
+import { GalleryImage } from '../models';
 import { GalleryService } from '../services/gallery.service';
 import { Observable } from "rxjs";
 

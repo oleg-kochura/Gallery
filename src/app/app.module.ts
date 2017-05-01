@@ -1,12 +1,12 @@
-import {NgModule}      from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {JsonpModule} from '@angular/http';
 
 // angular-material modules
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdInputModule, MdIconModule, MdCardModule, MdSidenavModule, MdToolbarModule} from '@angular/material';
+import { MdButtonModule, MdInputModule, MdIconModule, MdCardModule, MdSidenavModule, MdToolbarModule } from '@angular/material';
 
 // components
 import { AppComponent }  from './app.component';

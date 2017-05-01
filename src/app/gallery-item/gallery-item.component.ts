@@ -1,5 +1,5 @@
-import { Component, Input} from '@angular/core';
-import { GalleryImage } from '../shared/image';
+import { Component, Input } from '@angular/core';
+import { GalleryImage } from '../models';
 import { GalleryService } from '../services/gallery.service';
 
 @Component({

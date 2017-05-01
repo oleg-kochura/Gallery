@@ -1,3 +1,9 @@
-<label class="placeholder">Add your picture
-  <input type="file" (change)="onChange($event)">
+<label class="placeholder">
+  <i class="material-icons icon icon-upload">file_upload</i>
+  <input type="file" name="file" accept="image/*"
+         (change)="handleInputChange($event)">
 </label>
+
+<!--<label class="placeholder">Add your picture-->
+  <!--<input type="file" (change)="onChange($event)">-->
+<!--</label>-->

@@ -10,18 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var models_1 = require("../models");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
-var image_1 = require("../shared/image");
 var ApiService = (function () {
     function ApiService(http) {
         this.http = http;
         this.api = {
             baseUrl: 'https://api.flickr.com/services/rest/?method=',
-            api_key: "98a0e431c34ee80634479fda5b7971d3" //my private api_key for flickr.com  NOT FOR USE!
+            api_key: '98a0e431c34ee80634479fda5b7971d3' //my private api_key for flickr.com  NOT FOR USE!
         };
     }
-    // flickr.interestingness.getList
+    //Api method:  flickr.interestingness.getList
     ApiService.prototype.getPhotos = function (per_page) {
         return this.http.get(this.api.baseUrl + "flickr.interestingness.getList&api_key=" + this.api.api_key + "&per_page=" + per_page + "&format=json&nojsoncallback=1")
             .map(function (res) {
@@ -29,7 +29,7 @@ var ApiService = (function () {
             console.log(photosArr);
             var newArr = photosArr.map(function (item) {
                 var src = "https://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg";
-                var newImage = new image_1.GalleryImage(src, item.id);
+                var newImage = new models_1.GalleryImage(src, item.id);
                 return newImage;
             });
             return newArr;
