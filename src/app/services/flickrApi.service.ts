@@ -23,7 +23,6 @@ export class ApiService {
     return this.http.get(`${this.api.baseUrl}flickr.interestingness.getList&api_key=${this.api.api_key}&per_page=${per_page}&format=json&nojsoncallback=1`)
       .map(res => {
         let photosArr = res.json().photos.photo;
-        console.log(photosArr);
         let newArr = photosArr.map((item: any) => {
           let src = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`;
           let newImage = new GalleryImage(src, item.id);

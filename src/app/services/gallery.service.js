@@ -29,7 +29,6 @@ var GalleryService = (function () {
         this.api.getPhotos(per_page).subscribe(function (res) {
             _this.dataStore.photos = res;
             _this._photos.next(res);
-            console.log(res);
         });
     };
     GalleryService.prototype.getCommentsList = function (id) {
@@ -47,9 +46,7 @@ var GalleryService = (function () {
             .subscribe(function (comments) {
             data.comments = _this.setUsersIcons(comments);
             _this._popupData.next(data);
-            console.log(data);
         });
-        console.log(data);
     };
     GalleryService.prototype.setUsersIcons = function (data) {
         var baseIconUrl = "https://www.flickr.com/images/buddyicon.gif";

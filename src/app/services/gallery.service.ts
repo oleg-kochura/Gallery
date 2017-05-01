@@ -33,7 +33,6 @@ export class GalleryService {
     this.api.getPhotos(per_page).subscribe(res => {
       this.dataStore.photos = res;
       this._photos.next(res);
-      console.log(res);
     });
   }
 
@@ -54,9 +53,7 @@ export class GalleryService {
       .subscribe(comments => {
         data.comments = this.setUsersIcons(comments);
         this._popupData.next(data);
-        console.log(data);
       });
-    console.log(data);
   }
 
   setUsersIcons(data: any) {
