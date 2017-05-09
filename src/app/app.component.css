@@ -1,15 +1,7 @@
 .wrapper {
   position: relative;
-  width: 1024px;
-  height: 768px;
-  background: #eceff4;
+  width: 100%;
   margin: auto;
-}
-
-.container {
-  width: 974px;
-  height: 680px;
-  overflow-x: scroll;
 }
 
 h1 {

@@ -18,10 +18,8 @@ export class PicturesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    let photosPerPage = 10;
-
+    let photosPerPage = 20;
     this.galleryService.getPhotos(photosPerPage);
     this.images = this.galleryService.photos;
   }
-
 }

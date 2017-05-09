@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+body {
+  /*padding: 0 40px;*/
+  background: #f0f3f6;
+}
+
 button {
   background: transparent;
   outline: none;

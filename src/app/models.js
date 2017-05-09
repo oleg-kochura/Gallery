@@ -15,6 +15,7 @@ var GalleryImage = (function () {
         this.comments = [];
         this.likes = 0;
         this.dislikes = 0;
+        this.ratio = 'default';
         this.src = src || '';
         this.id = id;
     }

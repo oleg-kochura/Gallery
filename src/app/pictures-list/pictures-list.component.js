@@ -15,7 +15,7 @@ var PicturesListComponent = (function () {
         this.galleryService = galleryService;
     }
     PicturesListComponent.prototype.ngOnInit = function () {
-        var photosPerPage = 10;
+        var photosPerPage = 20;
         this.galleryService.getPhotos(photosPerPage);
         this.images = this.galleryService.photos;
     };

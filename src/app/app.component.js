@@ -22,8 +22,6 @@ var AppComponent = (function () {
         var pckry = new Packery(container, {
             itemSelector: 'gallery-item',
             gutter: 10,
-            horizontal: true,
-            percentPosition: true,
             transitionDuration: '0.2s'
         });
     };

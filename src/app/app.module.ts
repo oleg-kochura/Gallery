@@ -23,7 +23,6 @@ import { ApiService } from './services/flickrApi.service'
 
 import 'hammerjs';
 
-
 // custom NgModule, to group all material modules into one module
 @NgModule({
   imports: [MdButtonModule, MdInputModule, MdIconModule, MdCardModule, MdSidenavModule, MdToolbarModule],

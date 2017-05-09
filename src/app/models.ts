@@ -13,6 +13,8 @@ export class GalleryImage {
   likes: number = 0;
   dislikes: number = 0;
   id: number;
+  ratio: string = 'default';
+
 
   constructor(src: string, id?: number) {
     this.src = src || '';

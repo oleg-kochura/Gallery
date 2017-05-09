@@ -22,8 +22,6 @@ export class AppComponent implements AfterViewChecked {
     let pckry = new Packery(container, {
       itemSelector: 'gallery-item',
       gutter: 10,
-      horizontal: true,
-      percentPosition: true,
       transitionDuration: '0.2s'
     });
   }
