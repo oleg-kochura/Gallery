@@ -9,7 +9,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
-var http_2 = require("@angular/http");
+var router_1 = require("@angular/router");
 // angular-material modules
 var animations_1 = require("@angular/platform-browser/animations");
 var material_1 = require("@angular/material");
@@ -21,6 +21,7 @@ var placeholder_component_1 = require("./placeholder/placeholder.component");
 var popup_component_1 = require("./popup/popup.component");
 var form_component_1 = require("./form/form.component");
 var comments_list_component_1 = require("./comments-list/comments-list.component");
+var picture_detail_component_1 = require("./picture-detail/picture-detail.component");
 // services
 var gallery_service_1 = require("./services/gallery.service");
 var flickrApi_service_1 = require("./services/flickrApi.service");
@@ -51,7 +52,21 @@ AppModule = __decorate([
             http_1.HttpModule,
             animations_1.BrowserAnimationsModule,
             CustomMaterialModule,
-            http_2.JsonpModule
+            router_1.RouterModule.forRoot([
+                {
+                    path: '',
+                    redirectTo: '/gallery',
+                    pathMatch: 'full'
+                },
+                {
+                    path: 'gallery',
+                    component: pictures_list_component_1.PicturesListComponent
+                },
+                {
+                    path: 'picture/:id',
+                    component: picture_detail_component_1.PictureDetail
+                }
+            ])
         ],
         declarations: [
             app_component_1.AppComponent,
@@ -60,7 +75,8 @@ AppModule = __decorate([
             placeholder_component_1.PlaceholderComponent,
             popup_component_1.PopupComponent,
             form_component_1.FormComponent,
-            comments_list_component_1.CommentsListComponent
+            comments_list_component_1.CommentsListComponent,
+            picture_detail_component_1.PictureDetail
         ],
         providers: [gallery_service_1.GalleryService, flickrApi_service_1.ApiService],
         bootstrap: [app_component_1.AppComponent]

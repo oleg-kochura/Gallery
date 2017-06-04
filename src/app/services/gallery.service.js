@@ -24,6 +24,9 @@ var GalleryService = (function () {
         this.photos = this._photos.asObservable();
         this.popupData = this._popupData.asObservable();
     }
+    GalleryService.prototype.getPhotoById = function (id) {
+        return this.dataStore.photos.find(function (item) { return +item.id === id; });
+    };
     GalleryService.prototype.getPhotos = function (per_page) {
         var _this = this;
         this.api.getPhotos(per_page).subscribe(function (res) {

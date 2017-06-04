@@ -15,7 +15,7 @@ var AppComponent = (function () {
         this.title = 'Welcome to Viseven imagestock';
     }
     AppComponent.prototype.ngAfterViewChecked = function () {
-        this.setGrid();
+        // this.setGrid();
     };
     AppComponent.prototype.setGrid = function () {
         var container = this.container.grid.nativeElement;

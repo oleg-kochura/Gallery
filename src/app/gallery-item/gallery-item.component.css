@@ -1,29 +1,32 @@
 :host {
+  display: block;
   overflow: hidden;
   cursor: pointer;
   border-radius: 3px;
   box-shadow: 0 2px 10px 0 rgba(194, 205, 216, 1);
-}
-
-:host:nth-child(4n+1) {
-  width: 482px;
-  height: 410px;
-}
-
-:host:nth-child(4n+2) {
   width: 236px;
-  height: 410px;
+  height: 236px;
 }
 
-:host:nth-child(4n+3) {
-  width: 482px;
-  height: 200px;
-}
+/*:host:nth-child(4n+1) {*/
+  /*width: 482px;*/
+  /*height: 410px;*/
+/*}*/
 
-:host:nth-child(4n+4) {
-  width: 236px;
-  height: 200px;
-}
+/*:host:nth-child(4n+2) {*/
+  /*width: 236px;*/
+  /*height: 410px;*/
+/*}*/
+
+/*:host:nth-child(4n+3) {*/
+  /*width: 482px;*/
+  /*height: 200px;*/
+/*}*/
+
+/*:host:nth-child(4n+4) {*/
+  /*width: 236px;*/
+  /*height: 200px;*/
+/*}*/
 
 .gallery-item {
   width: 100%;

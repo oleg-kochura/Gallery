@@ -14,7 +14,7 @@ export class ApiService {
   constructor(private http: Http) {
     this.api = {
       baseUrl: 'https://api.flickr.com/services/rest/?method=',
-      api_key: '98a0e431c34ee80634479fda5b7971d3'  //my private api_key for flickr.com  NOT FOR USE!
+      api_key: '98a0e431c34ee80634479fda5b7971d3'  //private api_key for flickr.com  NOT FOR USE!
     };
   }
 
@@ -34,7 +34,7 @@ export class ApiService {
       });
   }
 
-  getCommentsList(id: any) {
+  getCommentsList(id: number) {
     let options = {
       photo_id: id
     };

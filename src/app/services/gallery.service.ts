@@ -29,6 +29,11 @@ export class GalleryService {
     this.popupData = this._popupData.asObservable();
   }
 
+
+  getPhotoById(id: number){
+    return this.dataStore.photos.find(item => +item.id === id);
+  }
+
   getPhotos(per_page: number) {
     this.api.getPhotos(per_page).subscribe(res => {
       this.dataStore.photos = res;

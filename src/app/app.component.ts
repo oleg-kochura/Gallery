@@ -14,7 +14,7 @@ export class AppComponent implements AfterViewChecked {
   @ViewChild(PicturesListComponent) container: PicturesListComponent;
 
   ngAfterViewChecked() {
-    this.setGrid();
+    // this.setGrid();
   }
 
   setGrid() {

@@ -2,7 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {JsonpModule} from '@angular/http';
+import { RouterModule } from '@angular/router';
+
 
 // angular-material modules
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -16,6 +17,7 @@ import { PlaceholderComponent }  from './placeholder/placeholder.component';
 import { PopupComponent }  from './popup/popup.component';
 import { FormComponent }  from './form/form.component';
 import { CommentsListComponent }  from './comments-list/comments-list.component';
+import { PictureDetail }  from './picture-detail/picture-detail.component';
 
 // services
 import { GalleryService } from './services/gallery.service';
@@ -38,7 +40,21 @@ export class CustomMaterialModule { }
     HttpModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
-    JsonpModule
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/gallery',
+        pathMatch: 'full'
+      },
+      {
+        path: 'gallery',
+        component: PicturesListComponent
+      },
+      {
+        path: 'picture/:id',
+        component: PictureDetail
+      }
+    ])
   ],
   declarations: [
     AppComponent,
@@ -47,7 +63,8 @@ export class CustomMaterialModule { }
     PlaceholderComponent,
     PopupComponent,
     FormComponent,
-    CommentsListComponent
+    CommentsListComponent,
+    PictureDetail
   ],
   providers: [GalleryService, ApiService],
   bootstrap: [AppComponent]

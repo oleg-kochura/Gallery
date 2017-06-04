@@ -5,3 +5,9 @@
   max-width: 1725px;
   margin: 0 auto;
 }
+
+.gallery-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
