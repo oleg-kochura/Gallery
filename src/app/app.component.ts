@@ -1,7 +1,7 @@
 import { Component, ViewChild, AfterViewChecked } from '@angular/core';
 import { PicturesListComponent }  from './pictures-list/pictures-list.component';
+import Packery from 'packery/js/packery';
 
-declare let Packery: any;
 
 @Component({
   selector: 'app',

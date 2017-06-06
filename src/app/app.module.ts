@@ -2,7 +2,6 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {JsonpModule} from '@angular/http';
 
 // angular-material modules
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -38,8 +37,7 @@ export class CustomMaterialModule { }
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    CustomMaterialModule,
-    JsonpModule
+    CustomMaterialModule
   ],
   declarations: [
     AppComponent,
