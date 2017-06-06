@@ -9,7 +9,7 @@ import Packery from 'packery/js/packery';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewChecked {
-  title: string  = 'Welcome to Viseven imagestock';
+  title: string  = 'Welcome to Gallery';
 
   @ViewChild(PicturesListComponent) container: PicturesListComponent;
 
